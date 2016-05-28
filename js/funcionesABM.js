@@ -1,71 +1,69 @@
-function BorrarCD(idParametro)
+function BorrarAlumno(idParametro)
 {
 	//alert(idParametro);
 		var funcionAjax=$.ajax({
 		url:"nexo.php",
 		type:"post",
 		data:{
-			queHacer:"BorrarCD",
+			queHacer:"BorrarAlumno",
 			id:idParametro	
 		}
 	});
 	funcionAjax.done(function(retorno){
 		Mostrar("MostrarGrilla");
-		$("#informe").html("cantidad de eliminados "+ retorno);	
 		
 	});
 	funcionAjax.fail(function(retorno){	
-		$("#informe").html(retorno.responseText);	
+		alert("Error en BorrarAlumno");
 	});	
 }
 
-function EditarCD(idParametro)
+function EditarAlumno(idParametro)
 {
 	var funcionAjax=$.ajax({
 		url:"nexo.php",
 		type:"post",
 		data:{
-			queHacer:"TraerCD",
+			queHacer:"TraerAlumno",
 			id:idParametro	
 		}
 	});
 	funcionAjax.done(function(retorno){
-		var cd =JSON.parse(retorno);	
-		$("#idCD").val(cd.id);
-		$("#cantante").val(cd.cantante);
-		$("#titulo").val(cd.titulo);
-		$("#anio").val(cd.año);
+		var alu =JSON.parse(retorno);	
+		$("#idCD").val(alu.id);
+		$("#cantante").val(alu.cantante);
+		$("#titulo").val(alu.titulo);
+		$("#anio").val(alu.año);
 	});
 	funcionAjax.fail(function(retorno){	
-		$("#informe").html(retorno.responseText);	
+		alert("Error en editar alumno");
 	});	
 	Mostrar("MostrarFormAlta");
 }
 
-function GuardarCD()
+function GuardarAlumno()
 {
-		var id=$("#idCD").val();
-		var cantante=$("#cantante").val();
-		var titulo=$("#titulo").val();
-		var anio=$("#anio").val();
+		var id=$("#idAlumno").val();
+		var nombre=$("#nombre").val();
+		var legajo=$("#legajo").val();
+		var sexo=$("#sexo").val();
 
 		var funcionAjax=$.ajax({
 		url:"nexo.php",
 		type:"post",
 		data:{
-			queHacer:"GuardarCD",
+			queHacer:"GuardarAlumno",
 			id:id,
-			cantante:cantante,
-			titulo:titulo,
-			anio:anio	
+			nombre:nombre,
+			legajo:legajo,
+			sexo:sexo
 		}
 	});
 	funcionAjax.done(function(retorno){
 			Mostrar("MostrarGrilla");
-		$("#informe").html("cantidad de agregados "+ retorno);	
 		
 	});
 	funcionAjax.fail(function(retorno){	
-		$("#informe").html(retorno.responseText);	
+		alert("Error en guardar alumno");
 	});	
 }

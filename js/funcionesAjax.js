@@ -41,12 +41,10 @@ function Mostrar(queMostrar)
 		data:{queHacer:queMostrar}
 	});
 	funcionAjax.done(function(retorno){
-		$("#principal").html(retorno);
-		$("#informe").html("Correcto!!!");	
+		$("#divmostrar").html(retorno);
 	});
 	funcionAjax.fail(function(retorno){
-		$("#principal").html(":(");
-		$("#informe").html(retorno.responseText);	
+		$("#divmostrar").html(":(");	
 	});
 	funcionAjax.always(function(retorno){
 		//alert("siempre "+retorno.statusText);

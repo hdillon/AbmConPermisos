@@ -1,6 +1,6 @@
 <?php
 require_once('AccesoDatos.php');
-class alumno
+/*class alumno
 {
 	public $id;
 	public $nombre;
@@ -97,4 +97,6 @@ class alumno
 		
 	
 	
-}
+}*/
+
+?>
