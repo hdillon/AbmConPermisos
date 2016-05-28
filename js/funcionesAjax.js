@@ -1,3 +1,8 @@
+function Inicio()
+{
+$("#divmostrar").html("Home Page");
+}
+
 
 function MostrarError()
 {
@@ -61,12 +66,10 @@ function MostarLogin()
 		data:{queHacer:"MostarLogin"}
 	});
 	funcionAjax.done(function(retorno){
-		$("#principal").html(retorno);
-		$("#informe").html("Correcto Form login!!!");	
+		$("#divmostrar").html(retorno);
 	});
 	funcionAjax.fail(function(retorno){
-		$("#botonesABM").html(":(");
-		$("#informe").html(retorno.responseText);	
+		$("#divmostrar").html(":(");
 	});
 	funcionAjax.always(function(retorno){
 		//alert("siempre "+retorno.statusText);
