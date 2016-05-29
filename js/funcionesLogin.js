@@ -11,7 +11,15 @@ function validarLogin()
 	});
 
 	funcionAjax.done(function(respuesta){
-		alert(respuesta);
+		if(respuesta == 1)//Si se logró logear, modifico el boton login x logout
+		{
+			$("#BotonLogin").html("Logout");
+			$("#BotonLogin").attr("onclick","deslogear()");//MODIFICO LA FUNCION ONCLICK DEL BOTON CON JQUERY
+			$("#BotonLogin").addClass("button-red");
+		}else
+		{
+			alert("El usuario o password es incorrecto");
+		}
 		MostarLogin();
 	});
 }
@@ -26,10 +34,9 @@ function deslogear()
 	funcionAjax.done(function(retorno){
 			//MostarBotones();
 			MostarLogin();
-			$("#usuario").val("Sin usuario.");
-			$("#BotonLogin").html("Login<br>-Sesión-");
-			$("#BotonLogin").removeClass("btn-danger");
-			$("#BotonLogin").addClass("btn-primary");
+			$("#BotonLogin").html("Login");
+			$("#BotonLogin").attr("onclick","MostarLogin()");//MODIFICO LA FUNCION ONCLICK DEL BOTON CON JQUERY
+			$("#BotonLogin").addClass("button-blue");
 			
 	});	
 }

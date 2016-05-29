@@ -9,7 +9,7 @@ session_start();//PRIMER LINEA DE MI PHP, SINO NO VA A FUNCIONAR!
 	
 
  ?>
-<table class="table">
+<table class="table" id="table">
 	<thead>
 		<tr>
 			<th>Editar</th><th>Borrar</th><th>Nombre</th><th>Legajo</th><th>Sexo</th>
@@ -21,8 +21,8 @@ session_start();//PRIMER LINEA DE MI PHP, SINO NO VA A FUNCIONAR!
 
 foreach ($arrayDeAlumnos as $alu) {
 	echo"<tr>
-			<td><a onclick='EditarAlumno($alu->id)' class='btn btn-warning'> Editar</a></td>
-			<td><a onclick='BorrarAlumno($alu->id)' class='btn btn-danger'>  Borrar</a></td>
+			<td><a onclick='EditarAlumno($alu->id)' class='button'> Editar</a></td>
+			<td><a onclick='BorrarAlumno($alu->id)' class='button'>  Borrar</a></td>
 			<td>$alu->nombre</td>
 			<td>$alu->legajo</td>
 			<td>$alu->sexo</td>

@@ -6,28 +6,28 @@ session_start();
 
  
   <?php 
-//    if(!isset($_SESSION['usuario']))//Si está logeado NO MUESTRO el form login
-//{
+    if(!isset($_SESSION['usuario']))//Si está logeado NO MUESTRO el form login
+    {
   ?>
     
     <div class="Frm animated bounceInUp">
       <form class=""  onsubmit="validarLogin();return false;">
         <label>Login</label><br><br>
-        <input type="text" name="email" placeholder="Ingrese su email" id="correo"><br>
+        <input type="text" id="correo" name="email" placeholder="Ingrese su email" ><br>
         <input type="password" id="clave" minlength="4" placeholder="clave" required=""><br>
-          <input type="checkbox" id="recordarme" checked> Recordame </input><br>
-        <button type="submit" id="login">Login</button>
+        <input type="checkbox" id="recordarme" checked> Recordame </input><br><br>
+        <button type="submit" class="button" id="login">Login</button>
       </form>
     </div>
 
     <?php
-//}
-/*else
+  }
+  else
 {?>
 
-  <button class="btn btn-lg btn-danger btn-block"onclick="deslogear()">Ingresar</button>
+  <button class="button"onclick="deslogear()">Desloguear</button>
 <?php
-}*/
+}
 
     ?>
 
