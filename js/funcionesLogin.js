@@ -15,6 +15,7 @@ function validarLogin()
 		{
 			$("#BotonLogin").html("Logout");
 			$("#BotonLogin").attr("onclick","deslogear()");//MODIFICO LA FUNCION ONCLICK DEL BOTON CON JQUERY
+			$("#BotonLogin").removeClass("button-blue");
 			$("#BotonLogin").addClass("button-red");
 		}else
 		{

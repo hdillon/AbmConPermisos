@@ -1,6 +1,6 @@
 function Inicio()
 {
-$("#divmostrar").html("Home Page");
+$("#divmostrar").html("<h1>Home Page</h1>");
 }
 
 

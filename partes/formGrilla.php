@@ -6,31 +6,62 @@ if(isset($_SESSION['usuario']))//Si está logeado muestro la grilla
 	require_once("clases/alumno.php");
 	$arrayDeAlumnos=alumno::TraerTodoLosAlumnos();
 
-	
-
+	if($_SESSION['tipo'] == "admin")
+	{
  ?>
-<table class="table" id="table">
-	<thead>
-		<tr>
-			<th>Editar</th><th>Borrar</th><th>Nombre</th><th>Legajo</th><th>Sexo</th>
-		</tr>
-	</thead>
-	<tbody>
+	<table class="table" id="table">
+		<thead>
+			<tr>
+				<th>Editar</th><th>Borrar</th><th>Nombre</th><th>Legajo</th><th>Sexo</th>
+			</tr>
+		</thead>
+		<tbody>
 
-		<?php 
+			<?php 
 
-foreach ($arrayDeAlumnos as $alu) {
-	echo"<tr>
-			<td><a onclick='EditarAlumno($alu->id)' class='button'> Editar</a></td>
-			<td><a onclick='BorrarAlumno($alu->id)' class='button'>  Borrar</a></td>
-			<td>$alu->nombre</td>
-			<td>$alu->legajo</td>
-			<td>$alu->sexo</td>
-		</tr>   ";
-}
-		 ?>
-	</tbody>
-</table>
+	foreach ($arrayDeAlumnos as $alu) {
+		echo"<tr>
+				<td><a onclick='EditarAlumno($alu->id)' class='button'> Editar</a></td>
+				<td><a onclick='BorrarAlumno($alu->id)' class='button'>  Borrar</a></td>
+				<td>$alu->nombre</td>
+				<td>$alu->legajo</td>
+				<td>$alu->sexo</td>
+			</tr>   ";
+	}
+			 ?>
+		</tbody>
+	</table>
+	<?php 
+	}
+	else//SI NO ES ADMIN MUESTRO LA TABLA PERO SIN LOS BOTONES
+	{
+	?>
+	<table class="table" id="table">
+		<thead>
+			<tr>
+				<th>Editar</th><th>Borrar</th><th>Nombre</th><th>Legajo</th><th>Sexo</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<?php 
+
+	foreach ($arrayDeAlumnos as $alu) {
+		echo"<tr>
+				<td>N/A</td>
+				<td>N/A</td>
+				<td>$alu->nombre</td>
+				<td>$alu->legajo</td>
+				<td>$alu->sexo</td>
+			</tr>   ";
+	}
+			 ?>
+		</tbody>
+	</table>
+
+	<?php
+	}
+	?>
 
 <?php 
 }

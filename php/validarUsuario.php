@@ -8,49 +8,25 @@ require_once('../clases/usuario.php');
 
 $usuario = usuario::TraerUnUsuario($mail, $clave); 
 
-$retorno = 0;
+$sepudologear = 0;
 
-if($usuario->tipo == "admin")
+if($usuario->id != NULL)
 {		
-	$_SESSION['usuario']="admin";
-	$retorno= 1;
-}
+	$_SESSION['usuario']=$usuario->mail;
+	$_SESSION['tipo']=$usuario->tipo;//Guardo el tipo para después manejar los permisos
+	
+	$sepudologear= 1;
 
-echo $retorno;
-?>
-
-
-
-
-<?php 
-/*
-session_start();
-$usuario=$_POST['usuario'];
-$clave=$_POST['clave'];
-$recordar=$_POST['recordarme'];
-
-$retorno;
-
-if($usuario=="octavio@admin.com.ar" && $clave=="1234")
-{			
 	if($recordar=="true")
 	{
-		setcookie("registro",$usuario,  time()+36000 , '/');
-		
+		setcookie("cookieusuario", json_encode($usuario), time()+36000 , '/');
 	}else
 	{
-		setcookie("registro",$usuario,  time()-36000 , '/');
-		
+		setcookie("cookieusuario", "", time()-36000 , '/');
+		//setcookie("arraycookie[password]", "", time()-36000 , '/');
 	}
-	$_SESSION['registrado']="octavio";
-	$retorno=" ingreso";
-
-	
-}else
-{
-	$retorno= "No-esta";
 }
 
-echo $retorno;
-*/
+echo $sepudologear;
 ?>
+
