@@ -30,7 +30,7 @@ session_start();
   else
 {?>
 
-  <button class="button"onclick="deslogear()">Desloguear</button>
+  <button class="button-red"onclick="deslogear()">Desloguear</button>
 <?php
 }
 

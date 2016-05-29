@@ -33,7 +33,6 @@ function deslogear()
 	});
 
 	funcionAjax.done(function(retorno){
-			//MostarBotones();
 			MostarLogin();
 			$("#BotonLogin").html("Login");
 			$("#BotonLogin").attr("onclick","MostarLogin()");//MODIFICO LA FUNCION ONCLICK DEL BOTON CON JQUERY

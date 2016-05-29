@@ -9,7 +9,7 @@ if(isset($_SESSION['usuario']))//Si está logeado muestro la grilla
 	if($_SESSION['tipo'] == "admin")
 	{
  ?>
-	<table class="table" id="table">
+	<table class="Frm animated bounceInLeft" id="table">
 		<thead>
 			<tr>
 				<th>Editar</th><th>Borrar</th><th>Nombre</th><th>Legajo</th><th>Sexo</th>
@@ -21,8 +21,8 @@ if(isset($_SESSION['usuario']))//Si está logeado muestro la grilla
 
 	foreach ($arrayDeAlumnos as $alu) {
 		echo"<tr>
-				<td><a onclick='EditarAlumno($alu->id)' class='button'> Editar</a></td>
-				<td><a onclick='BorrarAlumno($alu->id)' class='button'>  Borrar</a></td>
+				<td><a onclick='EditarAlumno($alu->id)' class='button-orange'> Editar</a></td>
+				<td><a onclick='BorrarAlumno($alu->id)' class='button-red'>  Borrar</a></td>
 				<td>$alu->nombre</td>
 				<td>$alu->legajo</td>
 				<td>$alu->sexo</td>
@@ -36,7 +36,7 @@ if(isset($_SESSION['usuario']))//Si está logeado muestro la grilla
 	else//SI NO ES ADMIN MUESTRO LA TABLA PERO SIN LOS BOTONES
 	{
 	?>
-	<table class="table" id="table">
+	<table class="Frm animated bounceInLeft" id="table">
 		<thead>
 			<tr>
 				<th>Editar</th><th>Borrar</th><th>Nombre</th><th>Legajo</th><th>Sexo</th>

@@ -1,7 +1,9 @@
+body{
+    background-color: #f2f2f2;
+}
+
 div {
     border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 40px;
     text-align: center ; 
 }
 
@@ -57,7 +59,7 @@ a:link, a:visited {
 
 
 a:hover, a:active {
-    background-color: red;
+    background-color: #333;
 }
 
 input[type=submit] {
@@ -109,19 +111,20 @@ li a:hover:not(.active) {
 
 table {
     border-collapse: collapse;
-    width: 60%;
+    width: 40%;
 }
 
 th, td {
+      border: 1px solid #ddd;
     text-align: left;
     padding: 8px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(even){background-color: white}
 
 th {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #333;
+    color: white;                             
 }
 
 
@@ -153,6 +156,19 @@ th {
 
 .button-blue {
     background-color: #0040ff;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button-orange {
+    background-color: orange;
     border: none;
     color: white;
     padding: 15px 32px;

@@ -27,7 +27,7 @@ switch ($queHago) {
 			$alu->nombre=$_POST['nombre'];
 			$alu->legajo=$_POST['legajo'];
 			$alu->sexo=$_POST['sexo'];
-			if(isset($_POST['id'])){
+			if(isset($_POST['id']) && $_POST['id'] != ""){//Si viene el id es una modificación, sino es un alta
 				$alu->id=$_POST['id'];
 				$cantidad=$alu->ModificarAlumnoParametros();
 			}else

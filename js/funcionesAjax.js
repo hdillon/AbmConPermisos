@@ -1,6 +1,7 @@
 function Inicio()
 {
 $("#divmostrar").html("<h1>Home Page</h1>");
+$("#divmostrar").addClass("Frm animated bounceInDown");
 }
 
 
