@@ -4,13 +4,13 @@
 
     <div class="Frm animated bounceInUp">
 
-      <form class="" onsubmit="GuardarAlumno();return false">
+      <form onsubmit="GuardarAlumno();return false">
         <label>Alumno</label><br><br>
-        <input type="text"   id="nombre" title="Se necesita un nombre de alumno" class="form-control" placeholder="Nombre" required="" autofocus="">
-        <input type="text"   id="legajo" title="Se necesita un nro de legajo"  class="form-control" placeholder="Legajo" required="" autofocus="">
-        <input type="text"   id="sexo"   title="Se necesita un sexo"    class="form-control" placeholder="Sexo" required="" autofocus="">
-        <input readonly   type="hidden"    id="idAlumno">
-        <button type="submit">Guardar </button>
+        <input type="text"   id="nombre" title="Se necesita un nombre de alumno" placeholder="Nombre"><br>
+        <input type="text"   id="legajo" title="Se necesita un nro de legajo"  placeholder="Legajo"><br>
+        <input type="text"   id="sexo"  ><br>
+        <input type="hidden" readonly id="idAlumno"><br>
+        <button type="submit" class="button">Guardar </button>
       </form>
 
     </div> 

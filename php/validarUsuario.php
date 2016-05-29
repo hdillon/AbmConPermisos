@@ -1,12 +1,16 @@
 <?php 
 session_start();//Habilita el acceso a la variable superglobal session (es un array)
-$usuario=$_POST['usuario'];
+$mail=$_POST['usuario'];
 $clave=$_POST['clave'];
 $recordar=$_POST['recordarme'];
 
+require_once('../clases/usuario.php');
+
+$usuario = usuario::TraerUnUsuario($mail, $clave); 
+
 $retorno = 0;
 
-if($usuario=="admin@admin.com.ar" && $clave=="admin")
+if($usuario->tipo == "admin")
 {		
 	$_SESSION['usuario']="admin";
 	$retorno= 1;

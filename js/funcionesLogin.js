@@ -40,15 +40,3 @@ function deslogear()
 			
 	});	
 }
-function MostarBotones()
-{		//alert(queMostrar);
-	var funcionAjax=$.ajax({
-		url:"nexo.php",
-		type:"post",
-		data:{queHacer:"MostarBotones"}
-	});
-	funcionAjax.done(function(retorno){
-		$("#botonesABM").html(retorno);
-		//$("#informe").html("Correcto BOTONES!!!");	
-	});
-}

@@ -18,7 +18,7 @@ class alumno
 				return $consulta->rowCount();
 	 }
 	 
-	 public static function BorrarAlumnoPorAnio($legajo)
+	 public static function BorrarAlumnoPorLegajo($legajo)
 	 {
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 			$consulta =$objetoAccesoDato->RetornarConsulta("
@@ -40,19 +40,19 @@ class alumno
 				WHERE id='$this->id'");
 			return $consulta->execute();
 	 }
-	 public function ModificarCdParametros()
+	 public function ModificarAlumnoParametros()
 	 {
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 			$consulta =$objetoAccesoDato->RetornarConsulta("
-				update cds 
-				set titel=:titulo,
-				interpret=:cantante,
-				jahr=:anio
+				update alumno 
+				set nombre=:nombre,
+				legajo=:legajo,
+				sexo=:sexo
 				WHERE id=:id");
 			$consulta->bindValue(':id',$this->id, PDO::PARAM_INT);
-			$consulta->bindValue(':titulo',$this->titulo, PDO::PARAM_INT);
-			$consulta->bindValue(':anio', $this->año, PDO::PARAM_STR);
-			$consulta->bindValue(':cantante', $this->cantante, PDO::PARAM_STR);
+			$consulta->bindValue(':nombre',$this->nombre, PDO::PARAM_INT);
+			$consulta->bindValue(':legajo', $this->legajo, PDO::PARAM_STR);
+			$consulta->bindValue(':sexo', $this->sexo, PDO::PARAM_STR);
 			return $consulta->execute();
 	 }
   	public function mostrarDatos()

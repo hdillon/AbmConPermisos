@@ -1,7 +1,7 @@
 <?php 
 session_start();//PRIMER LINEA DE MI PHP, SINO NO VA A FUNCIONAR!
-//if(isset($_SESSION['usuario']))//Si está logeado muestro la grilla
-//{
+if(isset($_SESSION['usuario']))//Si está logeado muestro la grilla
+{
 	require_once("clases/AccesoDatos.php");
 	require_once("clases/alumno.php");
 	$arrayDeAlumnos=alumno::TraerTodoLosAlumnos();
@@ -33,10 +33,10 @@ foreach ($arrayDeAlumnos as $alu) {
 </table>
 
 <?php 
-/*}
+}
 else
 {
-echo "<h1>No esta logeado</h1>";
+	echo "<h1>Debe iniciar sesion</h1>";
 } 
-*/
-	 ?>
+
+?>

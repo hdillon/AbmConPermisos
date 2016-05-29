@@ -20,6 +20,7 @@ function BorrarAlumno(idParametro)
 
 function EditarAlumno(idParametro)
 {
+	Mostrar("MostrarFormAlta");//Primero cargo el formulario y después le seteo los valores, si lo muestro al final no me setea 
 	var funcionAjax=$.ajax({
 		url:"nexo.php",
 		type:"post",
@@ -29,16 +30,19 @@ function EditarAlumno(idParametro)
 		}
 	});
 	funcionAjax.done(function(retorno){
-		var alu =JSON.parse(retorno);	
-		$("#idCD").val(alu.id);
-		$("#cantante").val(alu.cantante);
-		$("#titulo").val(alu.titulo);
-		$("#anio").val(alu.año);
+		var alu =JSON.parse(retorno);
+		console.log(alu.nombre);
+		$("#idAlumno").val(alu.id);
+		/*$("#nombre").val(alu.nombre);
+		$("#legajo").val(alu.legajo);	//CON JQUERY NO FUNCAAAA (SÓLO EL HIDDEN(?))
+		$("#sexo").val(alu.sexo);*/
+		document.getElementById("nombre").setAttribute("value", alu.nombre);
+		document.getElementById("legajo").setAttribute("value", alu.legajo);
+		document.getElementById("sexo").setAttribute("value", alu.sexo);
 	});
 	funcionAjax.fail(function(retorno){	
 		alert("Error en editar alumno");
 	});	
-	Mostrar("MostrarFormAlta");
 }
 
 function GuardarAlumno()

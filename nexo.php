@@ -24,10 +24,14 @@ switch ($queHago) {
 		break;
 	case 'GuardarAlumno':
 			$alu = new alumno();
-			$alu->cantante=$_POST['nombre'];
-			$alu->titulo=$_POST['legajo'];
-			$alu->año=$_POST['sexo'];
-			$cantidad=$alu->InsertarElAlumno();
+			$alu->nombre=$_POST['nombre'];
+			$alu->legajo=$_POST['legajo'];
+			$alu->sexo=$_POST['sexo'];
+			if(isset($_POST['id'])){
+				$alu->id=$_POST['id'];
+				$cantidad=$alu->ModificarAlumnoParametros();
+			}else
+				$cantidad=$alu->InsertarElAlumno();
 			echo $cantidad;
 
 		break;
