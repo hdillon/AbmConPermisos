@@ -14,7 +14,8 @@ if(isset($_SESSION['usuario']))//verifico que esté logeado
         <label>Alumno</label><br><br>
         <input type="text"   id="nombre" title="Se necesita un nombre de alumno" placeholder="Nombre"><br>
         <input type="text"   id="legajo" title="Se necesita un nro de legajo"  placeholder="Legajo"><br>
-        <input type="text"   id="sexo"  title="Se necesita el sexo" placeholder="Sexo(M/F)"><br>
+         <input type="radio" name="sexo" id="m" value="M" checked="checked"> Masculino<br>
+        <input type="radio" name="sexo" id="f" value="F"> Femenino<br>
         <input type="hidden" readonly id="idAlumno" value=""><br>
         <button type="submit" class="button">Guardar </button>
       </form>

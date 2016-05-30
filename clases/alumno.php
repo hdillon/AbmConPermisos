@@ -50,7 +50,7 @@ class alumno
 				sexo=:sexo
 				WHERE id=:id");
 			$consulta->bindValue(':id',$this->id, PDO::PARAM_INT);
-			$consulta->bindValue(':nombre',$this->nombre, PDO::PARAM_INT);
+			$consulta->bindValue(':nombre',$this->nombre, PDO::PARAM_STR);
 			$consulta->bindValue(':legajo', $this->legajo, PDO::PARAM_STR);
 			$consulta->bindValue(':sexo', $this->sexo, PDO::PARAM_STR);
 			return $consulta->execute();

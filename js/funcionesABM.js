@@ -50,7 +50,7 @@ function GuardarAlumno()
 		var id=$("#idAlumno").val();
 		var nombre=$("#nombre").val();
 		var legajo=$("#legajo").val();
-		var sexo=$("#sexo").val();
+		var sexo = document.getElementById('m').checked ? "M" : "F";
 
 		var funcionAjax=$.ajax({
 		url:"nexo.php",
