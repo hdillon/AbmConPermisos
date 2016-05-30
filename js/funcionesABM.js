@@ -52,6 +52,9 @@ function GuardarAlumno()
 		var legajo=$("#legajo").val();
 		var sexo = document.getElementById('m').checked ? "M" : "F";
 
+		if(!ValidarDatos(nombre, legajo))
+			return;
+
 		var funcionAjax=$.ajax({
 		url:"nexo.php",
 		type:"post",
@@ -70,4 +73,24 @@ function GuardarAlumno()
 	funcionAjax.fail(function(retorno){	
 		alert("Error en guardar alumno");
 	});	
+}
+
+
+function ValidarDatos(nombre, legajo)
+{
+    if(nombre == ""){
+        alert("El campo Nombre no puede ser vacio!");
+        return false;
+    }
+
+    if(legajo == ""){
+        alert("El campo Legajo no puede ser vacio!");
+        return false;
+    }
+
+    if(!/^([0-9])*$/.test(legajo)){
+        alert("El campo Legajo debe ser numerico!");
+        return false;
+    }
+    return true;
 }
