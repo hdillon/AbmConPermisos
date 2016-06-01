@@ -14,7 +14,7 @@ function MostrarError()
 	});
 	funcionAjax.fail(function(retorno){
 			$("#principal").html("error :(");
-		$("#informe").html(retorno.responseText);		
+		//$("#informe").html(retorno.responseText);		
 	});
 	funcionAjax.always(function(retorno){
 		//alert("siempre "+retorno.statusText);

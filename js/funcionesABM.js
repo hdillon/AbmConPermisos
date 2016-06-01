@@ -38,7 +38,8 @@ function EditarAlumno(idParametro)
 		$("#sexo").val(alu.sexo);*/
 		document.getElementById("nombre").setAttribute("value", alu.nombre);
 		document.getElementById("legajo").setAttribute("value", alu.legajo);
-		document.getElementById("sexo").setAttribute("value", alu.sexo);
+		if(alu.sexo == 'F')
+			$('#f').prop('checked',true);
 	});
 	funcionAjax.fail(function(retorno){	
 		alert("Error en editar alumno");
