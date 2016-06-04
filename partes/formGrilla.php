@@ -1,5 +1,5 @@
 <?php 
-session_start();//PRIMER LINEA DE MI PHP, SINO NO VA A FUNCIONAR!
+//session_start();//PRIMER LINEA DE MI PHP, SINO NO VA A FUNCIONAR!
 if(isset($_SESSION['usuario']))//Si está logeado muestro la grilla
 {
 	require_once("clases/AccesoDatos.php");

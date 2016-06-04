@@ -1,3 +1,30 @@
+$(document).ready(function(){
+    validarSession();
+});
+
+function validarSession()
+{
+	var funcionAjax=$.ajax({
+		url:"nexo.php",
+		type:"post",
+		data:{queHacer:"ValidarSession"}
+	});
+	funcionAjax.done(function(retorno){
+		console.log(retorno);
+		if(retorno == 1)
+		{
+			$("#BotonLogin").html("Logout");
+			$("#BotonLogin").attr("onclick","deslogear()");
+			$("#BotonLogin").removeClass("button-blue");
+			$("#BotonLogin").addClass("button-red");
+			$("#BotonRegistrarse").hide();//Si se logueó, oculto el boton de registro
+		}
+	});
+	funcionAjax.fail(function(retorno){
+
+	});
+}
+
 function Inicio()
 {
 $("#divmostrar").html("<h1>Home Page</h1>");

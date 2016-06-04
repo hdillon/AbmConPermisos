@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 ?>
 <link href="css/estilos.css" rel="stylesheet" type="text/css">
 <link href="css/animaciones.css" rel="stylesheet" type="text/css">

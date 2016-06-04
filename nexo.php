@@ -1,4 +1,5 @@
 <?php
+session_start();//PRIMER LINEA DE MI PHP, SINO NO VA A FUNCIONAR!
 require_once("clases/AccesoDatos.php");
 require_once("clases/alumno.php");
 require_once("clases/usuario.php");
@@ -19,7 +20,7 @@ switch ($queHago) {
 	case 'MostrarFormAlta':
 			include("partes/formAlumno.php");
 		break;
-		case 'MostrarPerfil':
+	case 'MostrarPerfil':
 			include("partes/perfilUsuario.php");
 		break;
 	case 'BorrarAlumno':
@@ -67,6 +68,12 @@ switch ($queHago) {
 		$result = Archivo::SubirArchivo();
 		echo json_encode($result);
 	break;
+	case 'ValidarSession':
+			if(isset($_SESSION['usuario']))
+				echo 1;
+			else
+				echo 0;
+		break;
 	default:
 		# code...
 		break;
