@@ -97,3 +97,41 @@ function MostarRegistro()
 
 	});
 }
+
+
+function subirFoto()
+{
+    var foto = document.getElementById("foto").value;
+    
+    if(foto === "")
+    {
+        return;
+    }
+    
+    var formData = new FormData();
+    var archivo = $("#foto")[0];
+    formData.append("foto",archivo.files[0]);
+    formData.append("queHacer", "Subirfotos");
+
+    $.ajax({
+        type: 'POST',
+        url: "nexo.php",
+        dataType: "json",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formData,
+        async: true
+    })
+    .done(function (objJson) {
+        $("#Divfoto").html(objJson.html);
+        /*if(objJson)
+            alert("Foto Subida!");
+        else
+            alert("Foto No Subida!");*/
+    })
+    .fail(function (jqXHR, textStatus, errorThrown) {
+        alert(jqXHR.responseText + "\n" + textStatus + "\n" + errorThrown);
+    });   
+    
+}

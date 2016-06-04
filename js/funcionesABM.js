@@ -95,3 +95,63 @@ function ValidarDatos(nombre, legajo)
     }
     return true;
 }
+
+function GuardarUsuario()
+{
+		var id=$("#idUsuario").val();
+		var nombre=$("#nombre").val();
+		var mail=$("#correo").val();
+		var clave=$("#clave").val();
+		var clave2=$("#clave2").val();
+		var tipo = document.getElementById('a').checked ? "admin" : "user";
+		var nombreFoto = document.getElementById("hdnnombrefoto").value;
+
+		if(!ValidarDatosRegistro(nombre, clave, clave2, nombreFoto))
+			return;
+
+		var funcionAjax=$.ajax({
+		url:"nexo.php",
+		type:"post",
+		data:{
+			queHacer:"GuardarUsuario",
+			id:id,
+			nombre:nombre,
+			mail:mail,
+			clave:clave,
+			tipo:tipo,
+			nombreFoto, nombreFoto
+		}
+	});
+	funcionAjax.done(function(retorno){
+			Mostrar("MostrarGrilla");
+		
+	});
+	funcionAjax.fail(function(retorno){	
+		alert("Error en guardar alumno");
+	});	
+}
+
+function ValidarDatosRegistro(nombre, clave, clave2, nombreFoto))
+{
+    if(nombre == ""){
+        alert("El campo Nombre no puede ser vacio!");
+        return false;
+    }
+
+    if(clave == "" || clave2 == "" ){
+        alert("El campo clave no puede ser vacio!");
+        return false;
+    }
+
+    if(clave != clave2 ){
+        alert("Las claves no son iguales!");
+        return false;
+    }
+
+    if(nombreFoto == ""){
+        alert("Debe seleccionar una foto!");
+        return false;
+    }
+
+    return true;
+}
