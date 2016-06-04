@@ -140,6 +140,7 @@ th {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    transition-duration: 0.4s;
 }
 
 .button-red {
@@ -154,6 +155,7 @@ th {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    transition-duration: 0.4s;
 }
 
 .button-blue {
@@ -168,6 +170,7 @@ th {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    transition-duration: 0.4s;
 }
 
 .button-orange {
@@ -182,6 +185,7 @@ th {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    transition-duration: 0.4s;
 }
 
 .button-gray {
@@ -196,6 +200,7 @@ th {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    transition-duration: 0.4s;
 }
 
 .button-orange-disabled {
@@ -212,6 +217,7 @@ th {
     cursor: pointer;
     opacity: 0.65; 
     cursor: not-allowed;
+    transition-duration: 0.4s;
 }
 
 .button-red-disabled {
@@ -228,10 +234,11 @@ th {
     cursor: pointer;
     opacity: 0.65; 
     cursor: not-allowed;
+    transition-duration: 0.4s;
 }
 
 img {
-    border-radius: 50%;
+    border-radius: 90%;
 }
 
 </style>

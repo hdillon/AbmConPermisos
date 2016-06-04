@@ -6,7 +6,9 @@ if(isset($_SESSION['usuario']))//Si está logeado muestro la grilla
 	require_once("clases/usuario.php");
 	$objUsuario=usuario::TraerUnUsuarioPorId($_SESSION['id']);
 
-echo "<img src='$objUsuario->pathfoto' width='150px' height='150px'>"
+echo "<div id='mainmenu' class='Frm animated bounceInRight'>
+<img src='$objUsuario->pathfoto' width='150px' height='150px'><br><br>
+</div>"
  ?>
 
 	
