@@ -129,6 +129,7 @@ th {
 
 
 .button {
+    border-radius: 2px;
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -142,6 +143,7 @@ th {
 }
 
 .button-red {
+    border-radius: 2px;
     background-color: red;
     border: none;
     color: white;
@@ -155,6 +157,7 @@ th {
 }
 
 .button-blue {
+    border-radius: 2px;
     background-color: #0040ff;
     border: none;
     color: white;
@@ -168,7 +171,22 @@ th {
 }
 
 .button-orange {
+    border-radius: 2px;
     background-color: orange;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button-gray {
+    border-radius: 2px;
+    background-color: gray;
     border: none;
     color: white;
     padding: 15px 32px;

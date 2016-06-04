@@ -77,3 +77,23 @@ function MostarLogin()
 
 	});
 }
+
+function MostarRegistro()
+{
+		//alert("queMostrar");
+	var funcionAjax=$.ajax({
+		url:"nexo.php",
+		type:"post",
+		data:{queHacer:"MostarRegistro"}
+	});
+	funcionAjax.done(function(retorno){
+		$("#divmostrar").html(retorno);
+	});
+	funcionAjax.fail(function(retorno){
+		$("#divmostrar").html(":(");
+	});
+	funcionAjax.always(function(retorno){
+		//alert("siempre "+retorno.statusText);
+
+	});
+}

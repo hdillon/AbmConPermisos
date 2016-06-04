@@ -8,7 +8,7 @@ if(isset($_SESSION['usuario']))//verifico que esté logeado
 <link href="css/animaciones.css" rel="stylesheet">
 <link href="css/estilos.css" rel="stylesheet">
 
-    <div class="Frm animated bounceInUp">
+    <div class="Frm animated bounceInLeft">
 
       <form onsubmit="GuardarAlumno();return false">
         <label>Alumno</label><br><br>

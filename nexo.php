@@ -12,8 +12,14 @@ switch ($queHago) {
 	case 'MostarLogin':
 			include("partes/formLogin.php");
 		break;
+	case 'MostarRegistro':
+			include("partes/formRegistro.php");
+		break;
 	case 'MostrarFormAlta':
 			include("partes/formAlumno.php");
+		break;
+		case 'MostrarPerfil':
+			include("partes/perfilUsuario.php");
 		break;
 	case 'BorrarAlumno':
 			$alu = new alumno();

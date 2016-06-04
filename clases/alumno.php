@@ -89,10 +89,16 @@ class alumno
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 			$consulta =$objetoAccesoDato->RetornarConsulta("select id, nombre as nombre, legajo as legajo,sexo as sexo from alumno where id = $id");
+			$consulta =$objetoAccesoDato->RetornarConsulta("
+				SELECT id,
+				nombre AS nombre,
+				legajo AS legajo, 
+				sexo AS sexo 
+				FROM alumno 
+				WHERE id=:id");
+			$consulta->bindValue(':id',$id, PDO::PARAM_INT);
 			$consulta->execute();
-			$cdBuscado= $consulta->fetchObject('alumno');
-			return $cdBuscado;				
-			
+			return $consulta->fetchAll(PDO::FETCH_CLASS, "alumno");		
 	}
 		
 	

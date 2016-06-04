@@ -18,5 +18,15 @@ class usuario
 			return $usuarioBuscado;
 	}
 
+	public static function TraerUnUsuarioPorId($id) 
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("select id, nombre as nombre, mail as mail,password as password, tipo
+			as tipo from usuario where id = $id");
+			$consulta->execute();
+			$usuarioBuscado= $consulta->fetchObject('usuario');
+			return $usuarioBuscado;
+	}
+
 }
 ?>

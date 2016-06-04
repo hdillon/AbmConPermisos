@@ -11,7 +11,8 @@ $usuario = usuario::TraerUnUsuario($mail, $clave);
 $sepudologear = 0;
 
 if($usuario->id != NULL)
-{		
+{	
+	$_SESSION['id']=$usuario->id;	
 	$_SESSION['usuario']=$usuario->mail;
 	$_SESSION['tipo']=$usuario->tipo;//Guardo el tipo para después manejar los permisos
 	

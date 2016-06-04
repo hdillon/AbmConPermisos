@@ -15,7 +15,7 @@ session_start();
       }
   ?>
     
-    <div class="Frm animated bounceInUp">
+    <div class="Frm animated bounceInLeft">
       <form class=""  onsubmit="validarLogin();return false;">
         <label>Login</label><br><br>
         <input type="text" id="correo" name="email" placeholder="Ingrese su email" value="<?php  if(isset($arraycookie)){echo $arraycookie['mail'];}?>"><br>
