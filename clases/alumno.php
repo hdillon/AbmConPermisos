@@ -88,7 +88,6 @@ class alumno
 	public static function TraerUnAlumno($id) 
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("select id, nombre as nombre, legajo as legajo,sexo as sexo from alumno where id = $id");
 			$consulta =$objetoAccesoDato->RetornarConsulta("
 				SELECT id,
 				nombre AS nombre,
@@ -98,7 +97,7 @@ class alumno
 				WHERE id=:id");
 			$consulta->bindValue(':id',$id, PDO::PARAM_INT);
 			$consulta->execute();
-			return $consulta->fetchAll(PDO::FETCH_CLASS, "alumno");		
+			return $consulta->fetchObject('alumno');	
 	}
 		
 	

@@ -31,7 +31,6 @@ function EditarAlumno(idParametro)
 	});
 	funcionAjax.done(function(retorno){
 		var alu =JSON.parse(retorno);
-		console.log(alu.nombre);
 		$("#idAlumno").val(alu.id);
 		/*$("#nombre").val(alu.nombre);
 		$("#legajo").val(alu.legajo);	//CON JQUERY NO FUNCAAAA (SÓLO EL HIDDEN(?))
@@ -123,15 +122,16 @@ function GuardarUsuario()
 		}
 	});
 	funcionAjax.done(function(retorno){
-			Mostrar("MostrarGrilla");
-		
+		alert("Registro exitoso!");
+		$("#divmostrar").html("<h1>Home Page</h1>");
+	    $("#divmostrar").addClass("Frm animated bounceInDown");
 	});
 	funcionAjax.fail(function(retorno){	
 		alert("Error en guardar alumno");
 	});	
 }
 
-function ValidarDatosRegistro(nombre, clave, clave2, nombreFoto))
+function ValidarDatosRegistro(nombre, clave, clave2, nombreFoto)
 {
     if(nombre == ""){
         alert("El campo Nombre no puede ser vacio!");

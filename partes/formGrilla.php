@@ -48,8 +48,8 @@ if(isset($_SESSION['usuario']))//Si está logeado muestro la grilla
 
 	foreach ($arrayDeAlumnos as $alu) {
 		echo"<tr>
-				<td>N/A</td>
-				<td>N/A</td>
+				<td><a disabled class='button-orange-disabled'> Editar</a></td>
+				<td><a disabled class='button-red-disabled'>  Borrar</a></td>
 				<td>$alu->nombre</td>
 				<td>$alu->legajo</td>
 				<td>$alu->sexo</td>

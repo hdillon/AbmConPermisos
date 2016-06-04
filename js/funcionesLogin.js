@@ -14,9 +14,10 @@ function validarLogin()
 		if(respuesta == 1)//Si se logró logear, modifico el boton login x logout
 		{
 			$("#BotonLogin").html("Logout");
-			$("#BotonLogin").attr("onclick","deslogear()");//MODIFICO LA FUNCION ONCLICK DEL BOTON CON JQUERY
+			$("#BotonLogin").attr("onclick","deslogear()");
 			$("#BotonLogin").removeClass("button-blue");
 			$("#BotonLogin").addClass("button-red");
+			$("#BotonRegistrarse").hide();//Si se logueó, oculto el boton de registro
 		}else
 		{
 			alert("El usuario o password es incorrecto");
@@ -35,8 +36,8 @@ function deslogear()
 	funcionAjax.done(function(retorno){
 			MostarLogin();
 			$("#BotonLogin").html("Login");
-			$("#BotonLogin").attr("onclick","MostarLogin()");//MODIFICO LA FUNCION ONCLICK DEL BOTON CON JQUERY
+			$("#BotonLogin").attr("onclick","MostarLogin()");
 			$("#BotonLogin").addClass("button-blue");
-			
+			$("#BotonRegistrarse").show();
 	});	
 }

@@ -49,6 +49,7 @@ switch ($queHago) {
 			$usu->mail=$_POST['mail'];
 			$usu->password=$_POST['clave'];
 			$usu->tipo=$_POST['tipo'];
+			$usu->pathfoto='imagenes/' . $_POST['nombreFoto'];
 			if(isset($_POST['id']) && $_POST['id'] != ""){//Si viene el id es una modificación, sino es un alta
 				$usu->id=$_POST['id'];
 				$cantidad=$usu->ModificarUsuarioParametros();
