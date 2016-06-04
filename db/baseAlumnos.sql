@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-06-2016 a las 01:47:07
+-- Tiempo de generación: 04-06-2016 a las 22:27:00
 -- Versión del servidor: 5.5.15
 -- Versión de PHP: 5.6.3
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `alumno` (
   `nombre` varchar(50) NOT NULL,
   `legajo` varchar(50) NOT NULL,
   `sexo` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `alumno`
@@ -39,9 +39,7 @@ CREATE TABLE IF NOT EXISTS `alumno` (
 
 INSERT INTO `alumno` (`id`, `nombre`, `legajo`, `sexo`) VALUES
 (3, 'Pepon', '128', 'M'),
-(11, 'HoracioD', '123', 'M'),
-(12, 'Juana', '1245', 'F'),
-(18, 'Josefo', '222', 'M');
+(11, 'HoracioDi', '123', 'M');
 
 -- --------------------------------------------------------
 
@@ -75,16 +73,18 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `nombre` varchar(50) NOT NULL,
   `mail` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `tipo` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `tipo` varchar(50) NOT NULL,
+  `pathfoto` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `nombre`, `mail`, `password`, `tipo`) VALUES
-(1, 'Admin', 'admin@admin.com', 'admin', 'admin'),
-(2, 'User', 'user@user.com', 'user', 'user');
+INSERT INTO `usuario` (`id`, `nombre`, `mail`, `password`, `tipo`, `pathfoto`) VALUES
+(7, 'admin', 'admin@admin.com', 'admin', 'admin', 'imagenes/20160604222305.jpg'),
+(8, 'user', 'user@user.com', 'user', 'user', 'imagenes/20160604222334.jpg'),
+(9, 'user2', 'user2@user2.com', 'user2', 'user', 'imagenes/20160604222404.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -116,7 +116,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `cds`
 --
@@ -126,7 +126,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
