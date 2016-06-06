@@ -2,7 +2,7 @@
 <link href="css/animaciones.css" rel="stylesheet" type="text/css">
 
     <div class="Frm animated bounceInLeft">
-      <form class=""  onsubmit="GuardarUsuario();return false">
+      <form class=""  onsubmit="GuardarUsuario();return false" enctype="multipart/form-data">
         <label>Registro</label><br><br>
         <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" value=""><br>
         <input type="text" id="correo" name="email" placeholder="Ingrese su email" value=""><br>

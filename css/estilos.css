@@ -241,6 +241,22 @@ img {
     border-radius: 90%;
 }
 
+.button-orange2 {
+    border-radius: 2px;
+    background-color: orange;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 87%;
+    transition-duration: 0.4s;
+}
+
 #load{
     width:100%;
     height:100%;

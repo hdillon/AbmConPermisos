@@ -33,8 +33,7 @@ echo "<div id='mainmenu' class='Frm animated bounceInRight'>
 			<td>$objUsuario->tipo</td>
 			</tr> 
 			<tr>
-			<td>Editar</td>
-			<td><a onclick='EditarUsuario($objUsuario->id)' class='button-orange'> Editar</a></td>
+			<td colspan='2'><a onclick='EditarUsuario($objUsuario->id)' class='button-orange2'> Editar</a></td>
 			</tr>";
 			 ?>
 		</tbody>

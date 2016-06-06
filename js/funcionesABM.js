@@ -118,8 +118,12 @@ function EditarUsuario(idParametro)
 		document.getElementById("correo").setAttribute("value", usu.mail);
 		document.getElementById("clave").setAttribute("value", usu.password);
 		document.getElementById("clave2").setAttribute("value", usu.password);
+		var nombreFoto = usu.pathfoto.split("/"); //Obtengo sólo el nombre de la foto a partir del path
+		nombreFoto = nombreFoto[1];
+		$("#Divfoto").html("<input type='hidden' id='hdnnombrefoto' value='"+nombreFoto+"' />");
 		if(usu.tipo == 'user')
 			$('#u').prop('checked',true);
+		$("#login").html("Confirmar");	
 		}, delay);
 	
 	});
