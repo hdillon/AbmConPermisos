@@ -64,8 +64,13 @@ switch ($queHago) {
 			echo json_encode($alu) ;
 
 		break;
+	case 'TraerUsuario':
+			$usu = usuario::TraerUnUsuarioPorId($_POST['id']);		
+			echo json_encode($usu) ;
+
+		break;
 	case 'Subirfotos':
-		$result = Archivo::SubirArchivo();
+		$result = Archivo::SubirArchivo($_POST['mail']);
 		echo json_encode($result);
 	break;
 	case 'ValidarSession':

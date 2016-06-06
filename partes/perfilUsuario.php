@@ -34,7 +34,7 @@ echo "<div id='mainmenu' class='Frm animated bounceInRight'>
 			</tr> 
 			<tr>
 			<td>Editar</td>
-			<td><a onclick='Editarusuario($objUsuario->id)' class='button-orange'> Editar</a></td>
+			<td><a onclick='EditarUsuario($objUsuario->id)' class='button-orange'> Editar</a></td>
 			</tr>";
 			 ?>
 		</tbody>

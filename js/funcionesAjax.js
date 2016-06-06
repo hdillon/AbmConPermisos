@@ -10,7 +10,6 @@ function validarSession()
 		data:{queHacer:"ValidarSession"}
 	});
 	funcionAjax.done(function(retorno){
-		console.log(retorno);
 		if(retorno == 1)
 		{
 			$("#BotonLogin").html("Logout");
@@ -129,6 +128,7 @@ function MostarRegistro()
 function subirFoto()
 {
     var foto = document.getElementById("foto").value;
+    var mail = document.getElementById("correo").value;//recupero el mail para usarlo en el nombre de la foto
     
     if(foto === "")
     {
@@ -139,6 +139,8 @@ function subirFoto()
     var archivo = $("#foto")[0];
     formData.append("foto",archivo.files[0]);
     formData.append("queHacer", "Subirfotos");
+    formData.append("mail", mail);
+
 
     $.ajax({
         type: 'POST',

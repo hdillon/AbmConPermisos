@@ -18,7 +18,7 @@ function BorrarAlumno(idParametro)
 	});	
 }
 
-function EditarAlumno(idParametro)//CREAR UNA FUNCIONES QUE ME ASEGURE QUE SIEMPRE SE VA A CARGAR EL FORM ANTES DE QUE SE SETEEN LOS CAMPOS!
+function EditarAlumno(idParametro)
 {
 	var funcionAjax=$.ajax({
 		url:"nexo.php",
@@ -97,6 +97,38 @@ function ValidarDatos(nombre, legajo)
     return true;
 }
 
+function EditarUsuario(idParametro)
+{
+	var funcionAjax=$.ajax({
+		url:"nexo.php",
+		type:"post",
+		data:{
+			queHacer:"TraerUsuario",
+			id:idParametro	
+		}
+	});
+	funcionAjax.done(function(retorno){
+		Mostrar("MostarRegistro");
+
+		var delay=1000; //Demora de 1seg
+		setTimeout(function() {
+ 		var usu =JSON.parse(retorno);
+		$("#idUsuario").val(usu.id);
+		document.getElementById("nombre").setAttribute("value", usu.nombre);
+		document.getElementById("correo").setAttribute("value", usu.mail);
+		document.getElementById("clave").setAttribute("value", usu.password);
+		document.getElementById("clave2").setAttribute("value", usu.password);
+		if(usu.tipo == 'user')
+			$('#u').prop('checked',true);
+		}, delay);
+	
+	});
+	funcionAjax.fail(function(retorno){	
+		alert("Error en editar alumno");
+	});	
+}
+
+
 function GuardarUsuario()
 {
 		var id=$("#idUsuario").val();
@@ -109,7 +141,7 @@ function GuardarUsuario()
 
 		if(!ValidarDatosRegistro(nombre, clave, clave2, nombreFoto))
 			return;
-
+		console.log("asdsadasda");
 		var funcionAjax=$.ajax({
 		url:"nexo.php",
 		type:"post",
@@ -120,7 +152,7 @@ function GuardarUsuario()
 			mail:mail,
 			clave:clave,
 			tipo:tipo,
-			nombreFoto, nombreFoto
+			nombreFoto: nombreFoto
 		}
 	});
 	funcionAjax.done(function(retorno){
