@@ -13,6 +13,7 @@ class Archivo{
 
 		if(move_uploaded_file($_FILES["foto"]["tmp_name"], $destino)){
 			$retorno['html'] = "<input type='hidden' id='hdnnombrefoto' value='".$archivotmp."' />";
+			//clearstatcache();
 			return $retorno;
 		}
 		return FALSE;

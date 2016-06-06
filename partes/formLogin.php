@@ -21,7 +21,7 @@
         <input type="text" id="correo" name="email" placeholder="Ingrese su email" value="<?php  if(isset($arraycookie)){echo $arraycookie['mail'];}?>"><br>
         <input type="password" id="clave" minlength="4" placeholder="clave" required="" value="<?php  if(isset($arraycookie)){echo $arraycookie['password'];}?>"><br>
         <input type="checkbox" id="recordarme" checked> Recordame </input><br><br>
-        <button type="submit" class="button" id="login">Login</button>
+        <button type="submit" class="button-green" id="login"><span>Login </span></button>
       </form>
     </div>
 

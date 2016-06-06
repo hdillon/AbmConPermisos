@@ -123,7 +123,8 @@ function EditarUsuario(idParametro)
 		$("#Divfoto").html("<input type='hidden' id='hdnnombrefoto' value='"+nombreFoto+"' />");
 		if(usu.tipo == 'user')
 			$('#u').prop('checked',true);
-		$("#login").html("Confirmar");	
+		$("#login").html("<span>Confirmar </span>");	
+		$("#titulo").html("Editar Perfil");	
 		}, delay);
 	
 	});
@@ -160,7 +161,10 @@ function GuardarUsuario()
 		}
 	});
 	funcionAjax.done(function(retorno){
-		alert("Registro exitoso!");
+		if(id != null && id != "")
+			alert("Se guardaron los cambios!");
+		else
+			alert("Registro exitoso!");
 		$("#divmostrar").html("<h1>Home Page</h1>");
 	    $("#divmostrar").addClass("Frm animated bounceInDown");
 	});
