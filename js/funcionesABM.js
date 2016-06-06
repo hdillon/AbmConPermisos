@@ -18,9 +18,8 @@ function BorrarAlumno(idParametro)
 	});	
 }
 
-function EditarAlumno(idParametro)
+function EditarAlumno(idParametro)//CREAR UNA FUNCIONES QUE ME ASEGURE QUE SIEMPRE SE VA A CARGAR EL FORM ANTES DE QUE SE SETEEN LOS CAMPOS!
 {
-	Mostrar("MostrarFormAlta");//Primero cargo el formulario y después le seteo los valores, si lo muestro al final no me setea 
 	var funcionAjax=$.ajax({
 		url:"nexo.php",
 		type:"post",
@@ -30,15 +29,18 @@ function EditarAlumno(idParametro)
 		}
 	});
 	funcionAjax.done(function(retorno){
-		var alu =JSON.parse(retorno);
+		Mostrar("MostrarFormAlta");
+
+		var delay=1000; //Demora de 1seg
+		setTimeout(function() {
+ 		var alu =JSON.parse(retorno);
 		$("#idAlumno").val(alu.id);
-		/*$("#nombre").val(alu.nombre);
-		$("#legajo").val(alu.legajo);	//CON JQUERY NO FUNCAAAA (SÓLO EL HIDDEN(?))
-		$("#sexo").val(alu.sexo);*/
 		document.getElementById("nombre").setAttribute("value", alu.nombre);
 		document.getElementById("legajo").setAttribute("value", alu.legajo);
 		if(alu.sexo == 'F')
 			$('#f').prop('checked',true);
+		}, delay);
+	
 	});
 	funcionAjax.fail(function(retorno){	
 		alert("Error en editar alumno");
