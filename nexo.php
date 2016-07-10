@@ -7,7 +7,7 @@ require_once("clases/usuario.php");
 require_once("php/archivo.php");
 
 //Primero creo el client y valido que no de error:
-$host = 'http://localhost:80/AbmConWebServices/SERVIDOR/ws.php';
+$host = 'http://localhost:80/AbmConPermisos/SERVIDOR/ws.php';
 $client = new nusoap_client($host . '?wsdl');
 
 $err = $client->getError();
@@ -22,10 +22,10 @@ switch ($queHago) {
 	case 'MostrarGrilla':
 			include("partes/formGrilla.php");
 		break;
-	case 'MostarLogin':
+	case 'MostrarLogin':
 			include("partes/formLogin.php");
 		break;
-	case 'MostarRegistro':
+	case 'MostrarRegistro':
 			include("partes/formRegistro.php");
 		break;
 	case 'MostrarFormAlta':
@@ -54,7 +54,6 @@ switch ($queHago) {
 		}
 		break;
 	case 'GuardarAlumno':
-			$alu = new alumno();
 			$nombre=$_POST['nombre'];
 			$legajo=$_POST['legajo'];
 			$sexo=$_POST['sexo'];

@@ -30,7 +30,6 @@ $("#divmostrar").html("<h1>Home Page</h1>");
 $("#divmostrar").addClass("Frm animated bounceInDown");
 }
 
-
 function MostrarError()
 {
 	var funcionAjax=$.ajax({url:"nexoNoExiste.php",type:"post",data:{queHacer:"MostrarTexto"}});
@@ -39,13 +38,12 @@ function MostrarError()
 		$("#informe").html("Correcto!!!");
 	});
 	funcionAjax.fail(function(retorno){
-			$("#principal").html("error :(");
-		//$("#informe").html(retorno.responseText);		
+			$("#principal").html("error :(");	
 	});
 	funcionAjax.always(function(retorno){
-		//alert("siempre "+retorno.statusText);
 	});
 }
+
 function MostrarSinParametros()
 {
 	var funcionAjax=$.ajax({url:"nexoTexto.php"});
@@ -59,14 +57,11 @@ function MostrarSinParametros()
 		$("#informe").html(retorno.responseText);	
 	});
 	funcionAjax.always(function(retorno){
-		//alert("siempre "+retorno.statusText);
-
 	});
 }
 
 function Mostrar(queMostrar)
 {
-		//alert(queMostrar);
 	var funcionAjax=$.ajax({
 		url:"nexo.php",
 		type:"post",
@@ -79,51 +74,8 @@ function Mostrar(queMostrar)
 		$("#divmostrar").html(":(");	
 	});
 	funcionAjax.always(function(retorno){
-		//alert("siempre "+retorno.statusText);
-
 	});
 }
-
-function MostarLogin()
-{
-		//alert("queMostrar");
-	var funcionAjax=$.ajax({
-		url:"nexo.php",
-		type:"post",
-		data:{queHacer:"MostarLogin"}
-	});
-	funcionAjax.done(function(retorno){
-		$("#divmostrar").html(retorno);
-	});
-	funcionAjax.fail(function(retorno){
-		$("#divmostrar").html(":(");
-	});
-	funcionAjax.always(function(retorno){
-		//alert("siempre "+retorno.statusText);
-
-	});
-}
-
-function MostarRegistro()
-{
-		//alert("queMostrar");
-	var funcionAjax=$.ajax({
-		url:"nexo.php",
-		type:"post",
-		data:{queHacer:"MostarRegistro"}
-	});
-	funcionAjax.done(function(retorno){
-		$("#divmostrar").html(retorno);
-	});
-	funcionAjax.fail(function(retorno){
-		$("#divmostrar").html(":(");
-	});
-	funcionAjax.always(function(retorno){
-		//alert("siempre "+retorno.statusText);
-
-	});
-}
-
 
 function subirFoto()
 {
@@ -131,16 +83,14 @@ function subirFoto()
     var mail = document.getElementById("correo").value;//recupero el mail para usarlo en el nombre de la foto
     
     if(foto === "")
-    {
         return;
-    }
+    
     
     var formData = new FormData();
     var archivo = $("#foto")[0];
     formData.append("foto",archivo.files[0]);
     formData.append("queHacer", "Subirfotos");
     formData.append("mail", mail);
-
 
     $.ajax({
         type: 'POST',
@@ -154,10 +104,6 @@ function subirFoto()
     })
     .done(function (objJson) {
         $("#Divfoto").html(objJson.html);
-        /*if(objJson)
-            alert("Foto Subida!");
-        else
-            alert("Foto No Subida!");*/
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
         alert(jqXHR.responseText + "\n" + textStatus + "\n" + errorThrown);

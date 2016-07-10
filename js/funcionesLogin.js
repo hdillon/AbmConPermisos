@@ -22,7 +22,7 @@ function validarLogin()
 		{
 			alert("El usuario o password es incorrecto");
 		}
-		MostarLogin();
+		Mostrar("MostrarLogin");
 	});
 }
 
@@ -34,9 +34,9 @@ function deslogear()
 	});
 
 	funcionAjax.done(function(retorno){
-			MostarLogin();
+			Mostrar("MostrarLogin");
 			$("#BotonLogin").html("Login");
-			$("#BotonLogin").attr("onclick","MostarLogin()");
+			$("#BotonLogin").attr("onclick","Mostrar('MostrarLogin')");
 			$("#BotonLogin").addClass("button-blue");
 			$("#BotonRegistrarse").show();
 	});	
