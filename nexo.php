@@ -1,9 +1,20 @@
 <?php
 session_start();//PRIMER LINEA DE MI PHP, SINO NO VA A FUNCIONAR!
+require_once('./SERVIDOR/lib/nusoap.php');
 require_once("clases/AccesoDatos.php");
 require_once("clases/alumno.php");
 require_once("clases/usuario.php");
 require_once("php/archivo.php");
+
+//Primero creo el client y valido que no de error:
+$host = 'http://localhost:80/AbmConWebServices/SERVIDOR/ws.php';
+$client = new nusoap_client($host . '?wsdl');
+
+$err = $client->getError();
+if ($err) {
+	echo '<h2>ERROR EN LA CONSTRUCCION DEL WS:</h2><pre>' . $err . '</pre>';
+	die();
+}
 
 $queHago=$_POST['queHacer'];
 
@@ -24,27 +35,52 @@ switch ($queHago) {
 			include("partes/perfilUsuario.php");
 		break;
 	case 'BorrarAlumno':
-			$alu = new alumno();
-			$alu->id=$_POST['id'];
-			$cantidad=$alu->BorrarAlumno();
-			echo $cantidad;
+			$id = $_POST['id'];
 
+			$resultado = $client->call('BorrarAlumno', array($id));
+
+		if ($client->fault) {
+			echo '<h2>ERROR AL INVOCAR METODO:</h2><pre>';
+			print_r($cds);
+			echo '</pre>';
+		} else {
+			$err = $client->getError();
+			if ($err) {
+				echo '<h2>ERROR EN EL CLIENTE:</h2><pre>' . $err . '</pre>';
+			} 
+			else {
+				echo $resultado;
+			}
+		}
 		break;
 	case 'GuardarAlumno':
 			$alu = new alumno();
-			$alu->nombre=$_POST['nombre'];
-			$alu->legajo=$_POST['legajo'];
-			$alu->sexo=$_POST['sexo'];
+			$nombre=$_POST['nombre'];
+			$legajo=$_POST['legajo'];
+			$sexo=$_POST['sexo'];
 			if(isset($_POST['id']) && $_POST['id'] != ""){//Si viene el id es una modificación, sino es un alta
-				$alu->id=$_POST['id'];
-				$cantidad=$alu->ModificarAlumnoParametros();
+				$id=$_POST['id'];
+				$resultado = $client->call('ModificarAlumno', array($id, $nombre, $legajo, $sexo));
 			}else
-				$cantidad=$alu->InsertarElAlumno();
-			echo $cantidad;
+				$resultado = $client->call('GuardarAlumno', array($nombre, $legajo, $sexo));
+
+			if ($client->fault) {
+			echo '<h2>ERROR AL INVOCAR METODO:</h2><pre>';
+			print_r($cds);
+			echo '</pre>';
+			} else {
+				$err = $client->getError();
+				if ($err) {
+					echo '<h2>ERROR EN EL CLIENTE:</h2><pre>' . $err . '</pre>';
+				} 
+				else {
+					echo $resultado;
+				}
+			}
+			echo $resultado;
 
 		break;
-
-		case 'GuardarUsuario':
+	case 'GuardarUsuario':
 			$usu = new usuario();
 			$usu->nombre=$_POST['nombre'];
 			$usu->mail=$_POST['mail'];
@@ -60,8 +96,24 @@ switch ($queHago) {
 
 		break;
 	case 'TraerAlumno':
-			$alu = alumno::TraerUnAlumno($_POST['id']);		
-			echo json_encode($alu) ;
+			$id = $_POST['id'];	
+
+			$alu = $client->call('TraerUnAlumno', array($id));
+
+		if ($client->fault) {
+			echo '<h2>ERROR AL INVOCAR METODO:</h2><pre>';
+			print_r($cds);
+			echo '</pre>';
+		} else {
+			$err = $client->getError();
+			if ($err) {
+				echo '<h2>ERROR EN EL CLIENTE:</h2><pre>' . $err . '</pre>';
+			} 
+			else {
+				echo json_encode($alu);
+			}
+		}
+
 
 		break;
 	case 'TraerUsuario':
@@ -72,6 +124,26 @@ switch ($queHago) {
 	case 'Subirfotos':
 		$result = Archivo::SubirArchivo($_POST['mail']);
 		echo json_encode($result);
+
+		/*
+		$nombreFoto = $_POST['mail'];
+
+		$resultado = $client->call('SubirArchivo', array($nombreFoto));
+
+		var_dump($resultado);
+		if ($client->fault) {
+			echo '<h2>ERROR AL INVOCAR METODO:</h2><pre>';
+			echo '</pre>';
+		} else {
+			$err = $client->getError();
+			if ($err) {
+				echo '<h2>ERROR EN EL CLIENTE:</h2><pre>' . $err . '</pre>';
+			} 
+			else {
+				echo json_encode($resultado);
+			}
+		}
+		*/
 	break;
 	case 'ValidarSession':
 			if(isset($_SESSION['usuario']))
