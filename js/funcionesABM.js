@@ -120,7 +120,7 @@ function EditarUsuario(idParametro)
 		}
 	});
 	funcionAjax.done(function(retorno){
-		Mostrar("MostarRegistro");
+		Mostrar('MostrarRegistro');
 
 		var delay=1000; //Demora de 1seg
 		setTimeout(function() {
@@ -158,7 +158,6 @@ function GuardarUsuario()
 
 		if(!ValidarDatosRegistro(nombre, clave, clave2, nombreFoto))
 			return;
-		console.log("asdsadasda");
 		var funcionAjax=$.ajax({
 		url:"nexo.php",
 		type:"post",
@@ -181,7 +180,7 @@ function GuardarUsuario()
 	    $("#divmostrar").addClass("Frm animated bounceInDown");
 	});
 	funcionAjax.fail(function(retorno){	
-		alert("Error en guardar alumno");
+		alert("Error en guardar usuario");
 	});	
 }
 

@@ -93,6 +93,37 @@
 		return Archivo::SubirArchivo($nombreFoto);
 	}
 
+	$server->register('InsertarElUsuario',                	
+						array(),  
+						array('return' => 'xsd:Array'),   
+						'urn:wsPdo',                		
+						'urn:wsPdo#GuardarUsuario',             
+						'rpc',                        		
+						'encoded',                    		
+						'Guarda el usuario que se le pasa en el array'    			
+					);
+
+
+	function InsertarElUsuario($nombre, $mail, $password, $tipo, $pathFoto) {
+		
+		return usuario::InsertarElUsuario($nombre, $mail, $password, $tipo, $pathFoto);
+	}	
+
+	$server->register('ModificarUsuario',                	
+						array(),  
+						array('return' => 'xsd:Array'),   
+						'urn:wsPdo',                		
+						'urn:wsPdo#GuardarUsuario',             
+						'rpc',                        		
+						'encoded',                    		
+						'Modifica el usuario con los datos que se le pasa en el array'    			
+					);
+
+
+	function ModificarUsuario($id, $nombre, $mail, $password, $tipo, $pathFoto) {
+		
+		return usuario::ModificarUsuarioParametros($id, $nombre, $mail, $password, $tipo, $pathFoto);
+	}	
 	
 
 	

@@ -29,7 +29,7 @@ class usuario
 			return $usuarioBuscado;
 	}
 
-	public function ModificarUsuarioParametros()
+	public static function ModificarUsuarioParametros($id, $nombre, $mail, $password, $tipo, $pathFoto)
 	 {
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 			$consulta =$objetoAccesoDato->RetornarConsulta("
@@ -40,19 +40,19 @@ class usuario
 				tipo=:tipo,
 				pathfoto=:pathfoto
 				WHERE id=:id");
-			$consulta->bindValue(':id',$this->id, PDO::PARAM_INT);
-			$consulta->bindValue(':nombre',$this->nombre, PDO::PARAM_STR);
-			$consulta->bindValue(':mail', $this->mail, PDO::PARAM_STR);
-			$consulta->bindValue(':password', $this->password, PDO::PARAM_STR);
-			$consulta->bindValue(':tipo', $this->tipo, PDO::PARAM_STR);
-			$consulta->bindValue(':pathfoto', $this->pathfoto, PDO::PARAM_STR);
+			$consulta->bindValue(':id',$id, PDO::PARAM_INT);
+			$consulta->bindValue(':nombre',$nombre, PDO::PARAM_STR);
+			$consulta->bindValue(':mail', $mail, PDO::PARAM_STR);
+			$consulta->bindValue(':password', $password, PDO::PARAM_STR);
+			$consulta->bindValue(':tipo', $tipo, PDO::PARAM_STR);
+			$consulta->bindValue(':pathfoto', $pathfoto, PDO::PARAM_STR);
 			return $consulta->execute();
 	 }
 
-	 public function InsertarElUsuario()
+	 public static function InsertarElUsuario($nombre, $mail, $password, $tipo, $pathFoto)
 	 {
 				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into usuario (nombre,mail,password,tipo,pathfoto)values('$this->nombre','$this->mail','$this->password','$this->tipo','$this->pathfoto')");
+				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into usuario (nombre,mail,password,tipo,pathfoto)values('$nombre', '$mail', '$password', '$tipo', '$pathFoto')");
 				$consulta->execute();
 				return $objetoAccesoDato->RetornarUltimoIdInsertado();
 				

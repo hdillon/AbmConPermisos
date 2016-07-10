@@ -39,19 +39,20 @@ switch ($queHago) {
 
 			$resultado = $client->call('BorrarAlumno', array($id));
 
-		if ($client->fault) {
-			echo '<h2>ERROR AL INVOCAR METODO:</h2><pre>';
-			print_r($cds);
-			echo '</pre>';
-		} else {
-			$err = $client->getError();
-			if ($err) {
-				echo '<h2>ERROR EN EL CLIENTE:</h2><pre>' . $err . '</pre>';
+			if ($client->fault) {
+				echo '<h2>ERROR AL INVOCAR METODO:</h2><pre>';
+				print_r($cds);
+				echo '</pre>';
 			} 
 			else {
-				echo $resultado;
+				$err = $client->getError();
+				if ($err) {
+					echo '<h2>ERROR EN EL CLIENTE:</h2><pre>' . $err . '</pre>';
+				} 
+				else {
+					echo $resultado;
+				}
 			}
-		}
 		break;
 	case 'GuardarAlumno':
 			$nombre=$_POST['nombre'];
@@ -80,18 +81,33 @@ switch ($queHago) {
 
 		break;
 	case 'GuardarUsuario':
-			$usu = new usuario();
-			$usu->nombre=$_POST['nombre'];
-			$usu->mail=$_POST['mail'];
-			$usu->password=$_POST['clave'];
-			$usu->tipo=$_POST['tipo'];
-			$usu->pathfoto='imagenes/' . $_POST['nombreFoto'];
+			$nombre=$_POST['nombre'];
+			$mail=$_POST['mail'];
+			$password=$_POST['clave'];
+			$tipo=$_POST['tipo'];
+			$pathFoto='imagenes/' . $_POST['nombreFoto'];
 			if(isset($_POST['id']) && $_POST['id'] != ""){//Si viene el id es una modificación, sino es un alta
-				$usu->id=$_POST['id'];
-				$cantidad=$usu->ModificarUsuarioParametros();
+				$id=$_POST['id'];
+				$resultado = $client->call('ModificarUsuarioParametros', array($id, $nombre, $mail, $password, $tipo, $pathFoto));
 			}else
-				$cantidad=$usu->InsertarElUsuario();
-			echo $cantidad;
+				$resultado = $client->call('InsertarElUsuario', array($nombre, $mail, $password, $tipo, $pathFoto));
+			
+			if ($client->fault) {
+				echo '<h2>ERROR AL INVOCAR METODO:</h2><pre>';
+				print_r($cds);
+				echo '</pre>';
+			} 
+			else {
+				$err = $client->getError();
+				if ($err) {
+					echo '<h2>ERROR EN EL CLIENTE:</h2><pre>' . $err . '</pre>';
+				} 
+				else {
+					echo $resultado;
+				}
+			}
+			
+				
 
 		break;
 	case 'TraerAlumno':
