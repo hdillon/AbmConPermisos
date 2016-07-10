@@ -77,6 +77,18 @@ function GuardarAlumno()
 	});	
 }
 
+function BorrarCookie()
+{	
+	var funcionAjax=$.ajax({
+		url:"php/borrarCookie.php",
+		type:"post"
+	});
+
+	funcionAjax.done(function(retorno){
+			alert("Coockies eliminadas!");
+	});	
+}
+
 
 function ValidarDatos(nombre, legajo)
 {
