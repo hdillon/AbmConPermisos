@@ -1,2 +1,2 @@
-# AbmConPermisos
-ABM + Permisos de Usuario + Session + Cookies
+# Simple CRUD with php & mysql
+User Permissions + Session + Cookies
