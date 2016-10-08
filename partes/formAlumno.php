@@ -4,6 +4,7 @@ if(isset($_SESSION['usuario']))//verifico que esté logeado
 {
     if($_SESSION['tipo'] == "admin")
     {
+	
 ?>
 <link href="css/animaciones.css" rel="stylesheet">
 <link href="css/estilos.css" rel="stylesheet">
